@@ -1,0 +1,35 @@
+name: 'Next Godot C# Project Version'
+description: >-
+  Compute the next version of a C# project based on its current version, the version of Godot it is using, and a version bump method (major, minor, or patch).
+  
+  The version returned by this action will be bumped according to the version bump strategy. If the supplied Godot version is a prerelease version, this version will receive a corresponding prerelease label suffix showing which Godot prerelease version it uses. Stable versions do not have a Godot prerelease label suffix, as nuget would not recognize them as a stable version if they did.
+author: 'Chickensoft'
+branding:
+  icon: 'copy'
+  color: 'orange'
+outputs:
+  version:
+    description: >-
+      The next version of the C# project.
+inputs:
+  project-version:
+    required: true
+    description: >-
+      The version of the C# project.
+  godot-version:
+    required: true
+    description: >-
+      The version of Godot the C# project is using. More specifically, the version should be a valid version of the GodotSharp nuget package (which tracks the Godot versions). Specify 'global' or 'global.json' to load the Godot version from a global.json file.
+  bump:
+    required: true
+    description: >-
+      How to increment the version. Can be 'major', 'minor', or 'patch'.
+
+      A major increment bumps the major version and resets the minor and patch versions to 0.
+
+      A minor increment bumps the minor version and resets the patch version to 0.
+
+      A patch increment simply bumps the patch version.
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

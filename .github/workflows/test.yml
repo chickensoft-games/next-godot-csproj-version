@@ -1,0 +1,34 @@
+name: 'build-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+
+jobs:
+  tests:
+    name: 🧪 Integration Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # Use bash shells on all platforms.
+        shell: bash
+    steps:
+      - uses: actions/checkout@v3
+        name: 🧾 Checkout
+
+      - uses: ./
+        name: 📦 Compute Next Version
+        id: next-version
+        with:
+          # Version must include major, minor, and patch, and be >= 4.0.0
+          # Pre-release label is optional.
+          project-version: 1.0.0
+          godot-version: global.json
+          bump: major
+
+      - name: 🔬 Verify Next Version
+        run: |
+          echo "Next version: ${{ steps.next-version.outputs.version }}"
+          if [ "${{ steps.next-version.outputs.version }}" != "2.0.0-godot4.0.2-rc.1" ]; then
+            echo "Next version is not 2.0.0"
+            exit 1
+          fi
