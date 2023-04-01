@@ -1,6 +1,6 @@
 name: 'Next Godot C# Project Version'
 description: >-
-  Compute the next version of a C# project based on its current version, the version of Godot it is using, and a version bump method.
+  Compute the next version of a C# project based on the version of Godot it uses.
 author: 'Chickensoft'
 branding:
   icon: 'copy'
