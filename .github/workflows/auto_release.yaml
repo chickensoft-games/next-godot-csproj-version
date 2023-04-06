@@ -13,6 +13,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: rymndhng/release-on-push-action@master
+      - name: 🧾 Checkout
+        uses: actions/checkout@v3
+
+      - name: 📦 Release On Push
+        id: release-on-push
+        uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
