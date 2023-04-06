@@ -18,7 +18,7 @@ async function run(): Promise<void> {
   core.info(`🔼 Bump: ${bump}`)
 
   if (godotVersion.toLowerCase().includes('global')) {
-    const globalJsonPath = path.join(checkoutDirectory, 'global.json')
+    const globalJsonPath = path.join(checkoutDirectory, godotVersion)
     const hasGlobalJsonFile = fs.existsSync(globalJsonPath)
     core.info(`📢 Inferring Godot version from global.json file.`)
     core.info(`🌐 global.json file path: ${globalJsonPath}`)

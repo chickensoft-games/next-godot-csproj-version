@@ -59,7 +59,7 @@ function run() {
         core.info(`🖨 Project version: ${projectVersion}`);
         core.info(`🔼 Bump: ${bump}`);
         if (godotVersion.toLowerCase().includes('global')) {
-            const globalJsonPath = path_1.default.join(checkoutDirectory, 'global.json');
+            const globalJsonPath = path_1.default.join(checkoutDirectory, godotVersion);
             const hasGlobalJsonFile = fs.existsSync(globalJsonPath);
             core.info(`📢 Inferring Godot version from global.json file.`);
             core.info(`🌐 global.json file path: ${globalJsonPath}`);
