@@ -13,11 +13,8 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_BASIC }}
     steps:          
-      - name: 🧾 Checkout
-        uses: actions/checkout@v3
-
       - name: 📦 Release On Push
         uses: rymndhng/release-on-push-action@master
         with:
