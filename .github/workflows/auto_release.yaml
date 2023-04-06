@@ -1,23 +1,28 @@
 name: 📦 Release On Push
-on: 
-  push:
+on:
+  workflow_run:
+    workflows: ["test"]
     branches:
       - main
+    types:
+      - completed
 
 # See CONTRIBUTING.md for more information on how this action works.
 
 jobs:
   release-on-push:
     name: 📦 Release On Push
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
+    steps:          
       - name: 🧾 Checkout
+        if: steps.tests.outputs.passed == 'true'
         uses: actions/checkout@v3
 
       - name: 📦 Release On Push
-        id: release-on-push
+        if: steps.tests.outputs.passed == 'true'
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
