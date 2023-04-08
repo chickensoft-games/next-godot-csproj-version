@@ -28,7 +28,7 @@ async function run(): Promise<void> {
         `🚨 Cannot find global.json file to infer the Godot version from.`
       )
     }
-    const globalJsonFileContents = fs.readFileSync('global.json', 'utf8')
+    const globalJsonFileContents = fs.readFileSync(globalJsonPath, 'utf8')
     core.info(`🖨 global.json contents: ${globalJsonFileContents}`)
     const globalJson = JSON.parse(globalJsonFileContents) ?? {}
     core.info(
