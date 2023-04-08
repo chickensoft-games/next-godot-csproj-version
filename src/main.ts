@@ -29,7 +29,15 @@ async function run(): Promise<void> {
       )
     }
     const globalJsonFileContents = fs.readFileSync('global.json', 'utf8')
+    core.info(`🖨 global.json contents: ${globalJsonFileContents}`)
     const globalJson = JSON.parse(globalJsonFileContents) ?? {}
+    core.info(
+      `🖨 global.json parsed contents: ${JSON.stringify(
+        globalJsonFileContents,
+        null,
+        2
+      )}`
+    )
     godotVersion = globalJson['msbuild-sdks']['Godot.NET.Sdk'] ?? ''
   }
 
