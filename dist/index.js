@@ -68,7 +68,9 @@ function run() {
                 throw new Error(`🚨 Cannot find global.json file to infer the Godot version from.`);
             }
             const globalJsonFileContents = fs.readFileSync('global.json', 'utf8');
+            core.info(`🖨 global.json contents: ${globalJsonFileContents}`);
             const globalJson = (_b = JSON.parse(globalJsonFileContents)) !== null && _b !== void 0 ? _b : {};
+            core.info(`🖨 global.json parsed contents: ${JSON.stringify(globalJsonFileContents, null, 2)}`);
             godotVersion = (_c = globalJson['msbuild-sdks']['Godot.NET.Sdk']) !== null && _c !== void 0 ? _c : '';
         }
         core.info(`🤖 Godot version: ${godotVersion}`);
