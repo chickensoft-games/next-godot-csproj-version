@@ -1,7 +1,8 @@
 {
   "plugins": [
     "jest",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "@stylistic/eslint-plugin"
   ],
   "extends": [
     "plugin:github/recommended"
@@ -45,7 +46,7 @@
         "allowExpressions": true
       }
     ],
-    "@typescript-eslint/func-call-spacing": [
+    "@stylistic/func-call-spacing": [
       "error",
       "never"
     ],
@@ -70,11 +71,11 @@
     "@typescript-eslint/require-array-sort-compare": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     "semi": "off",
-    "@typescript-eslint/semi": [
+    "@stylistic/semi": [
       "error",
       "never"
     ],
-    "@typescript-eslint/type-annotation-spacing": "error",
+    "@stylistic/type-annotation-spacing": "error",
     "@typescript-eslint/unbound-method": "error"
   },
   "env": {
