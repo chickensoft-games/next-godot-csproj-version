@@ -17,11 +17,12 @@ export type Bump = 'major' | 'minor' | 'patch'
 export type ReleaseType = 'dev' | 'alpha' | 'beta' | 'rc' | 'stable'
 
 /**
- * Official semantic version regex.
+ * Official semantic version regex, but permitting a leading "v" in accordance
+ * with common Github conventions.
  * See https://semver.org
  */
 const SEMANTIC_VERSION_REGEX =
-  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+  /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
 
 export function parseVersion(version: string): SemanticVersion {
   const match = version.match(SEMANTIC_VERSION_REGEX)
